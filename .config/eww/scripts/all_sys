@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Music utils
+Status=$(playerctl status)
+
+Play_Pause(){
+		if [[ $Status = Playing ]]; then
+			echo "⏸"
+		else
+			echo "⏵"
+		fi
+}
+
+case $1 in
+		P_P) Play_Pause 	;;
+	esac

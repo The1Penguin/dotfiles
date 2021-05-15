@@ -1,0 +1,2 @@
+#! /bin/zsh
+{ eww close calendar ; eww close play ; eww close open-many ; eww close eww-window ; eww close profile ; eww close player ; eww close system-info ; eww close powermenu } || { eww open-many eww-window profile player system-info powermenu ; eww open calendar}
