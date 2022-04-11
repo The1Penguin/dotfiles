@@ -1,6 +1,20 @@
 #+title: config
 #+PROPERTY: header-args :tangle config.ini
 
+* Table of contents :toc:
+- [[#colors][Colors]]
+- [[#main-monitor][Main monitor]]
+  - [[#middle-bar][Middle bar]]
+  - [[#right-bar][Right bar]]
+- [[#second-monitor][Second monitor]]
+  - [[#main-bar][Main bar]]
+  - [[#right-bar-1][Right bar]]
+- [[#modules][Modules]]
+  - [[#bspwm][BSPWM]]
+  - [[#date][Date]]
+  - [[#pulsepipewire-control][Pulse/Pipewire control]]
+- [[#global-settings][Global settings]]
+
 * Colors
 #+begin_src conf
 [colors]
@@ -22,7 +36,7 @@ blue = #ff79c6
 #+begin_src conf
 [bar/mainMid]
 monitor = ${env:MONITOR:DP-4}
-width = 9%
+width = 10%
 height = 24
 offset-x = 45%
 ;offset-y = 1%
