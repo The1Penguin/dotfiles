@@ -1,0 +1,76 @@
+#+title: Bspwmrc
+#+PROPERTY: header-args :tangle bspwmrc
+
+* Table of contents :toc:
+- [[#bootup-programs][Bootup programs]]
+- [[#bandaid-fix][Bandaid fix]]
+- [[#config][Config]]
+- [[#rules][Rules]]
+- [[#colors][Colors]]
+
+* Bootup programs
+Necessary programs for the intended use of bspwm
+#+begin_src sh
+#! /bin/sh
+sxhkd &
+dunst &
+exec $HOME/.config/picom/launch.sh &
+xsetroot -cursor_name left_ptr &
+feh --bg-fill ~/Pictures/Wallpaper/sakuraflower.png
+xset -dpms s off
+exec $HOME/.config/polybar/launch.sh &
+#+end_src
+
+Autolaunch programs that I use.
+#+begin_src sh
+owncloud &
+xmodmap $HOME/.Xmodmap
+#+end_src
+
+* Bandaid fix
+Bspwm has certain issues when it comes to java and javafx, this makes them kinda work.
+#+begin_src sh
+export _JAVA_AWT_WM_NONREPARENTING=1
+#+end_src
+
+* Config
+Setting up which monitors to use and what desktops these use
+#+begin_src sh
+bspc monitor DP-2 -d 1 2 3 4 5
+bspc monitor DP-4 -d 6 7 8 9 10
+#+end_src
+
+Decides how certain things about bspwm should work, the main part of the config.
+#+begin_src sh
+bspc config click_to_focus      button1
+bspc config border_width        3
+bspc config window_gap          10
+bspc config swallow_first_click false
+bspc config split_ratio         0.52
+bspc config borderless_monocle  true
+bspc config gapless_monocle     true
+bspc config ignore_ewmh_focus   false
+#+end_src
+
+* Rules
+Creates rules for how certain windows should be tiled.
+
+#+begin_src sh
+bspc rule -a mpv state=pseudo_tiled
+bspc rule -a Komikku state=pseudo_tiled
+bspc rule -a Sxiv state=pseudo_tiled
+bspc rule -a Zathura state=tiled
+bspc rule -a scrcpy state=floating
+bspc rule -a pomotroid state=pseudo_tiled
+bspc rule -a Emacs state=pseudo_tiled
+#+end_src
+
+* Colors
+Creates the colors for the borders of windows.
+
+#+begin_src sh
+bspc config normal_border_color "#282a36"
+bspc config active_border_color "#282a36"
+bspc config focused_border_color "#ff79c6"
+bspc config presel_feedback_color "#6272a4"
+#+end_src

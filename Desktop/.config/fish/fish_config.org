@@ -1,0 +1,61 @@
+#+title: Fish config
+#+PROPERTY: header-args :tangle config.fish
+
+* Table of contents :toc:
+- [[#enable-starship-as-the-given-prompt][Enable starship as the given prompt]]
+- [[#disable-greeting][Disable greeting]]
+- [[#aliases][Aliases]]
+- [[#paths][Paths]]
+- [[#exports][Exports]]
+- [[#escape-delay][Escape delay]]
+
+* Enable starship as the given prompt
+#+begin_src conf
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+    starship init fish | source
+end
+#+end_src
+
+* Disable greeting
+#+begin_src conf
+set fish_greeting
+#+end_src
+
+* Aliases
+For commonly used or faster typing.
+#+begin_src conf
+alias :q 'exit';
+alias q 'exit';
+alias vim 'nvim';
+alias formel 'sw zathura ~/Documents/formelsamling.pdf';
+alias micro 'sw zathura ~/Documents/micro.pdf';
+alias emacs 'emacsclient -nw -c -a ""';
+alias ls 'lsd';
+alias ll 'lsd -alF';
+alias priv 'fish --private';
+#+end_src
+
+* Paths
+Nice paths to have.
+#+begin_src conf
+set -U fish_user_paths $fish_user_paths $HOME/.local/bin;
+set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin;
+set -U fish_user_paths $fish_user_paths $HOME/.emacs.d/bin;
+set -U fish_user_paths $fish_user_paths $HOME/.ghcup/bin;
+#+end_src
+
+* Exports
+Sets enviroment variables to things I need.
+#+begin_src conf
+export EDITOR='nvim';
+export BROWSER=/usr/bin/firefox-beta;
+export TEXMFHOME=$HOME/.texmf;
+export GRAVEYARD=$HOME/.local/share/Trash;
+#+end_src
+
+* Escape delay
+When using the fish addon sudope, esc is used as a key in rapid succession, this allows a human input.
+#+begin_src conf
+set -U fish_escape_delay_ms 300
+#+end_src

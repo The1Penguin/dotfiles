@@ -1,0 +1,14 @@
+format = "$directory"
+right_format = "$hostname"
+add_newline = false
+
+[hostname]
+ssh_only = true
+format = "[$hostname](bold yellow)"
+
+[directory]
+truncation_length = 0
+truncation_symbol = "…/"
+truncate_to_repo = false
+read_only = " 🔒"
+style = "cyan"

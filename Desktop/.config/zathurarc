@@ -1,0 +1,38 @@
+set adjust-open "width"
+set pages-per-row 1
+set scroll-page-aware "false"
+set smooth-scroll "false"
+set scroll-full-overlap 0.01
+set scroll-step 100
+set zoom-min 10
+set guioptions ""
+set scroll-step 50
+unmap f
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+set statusbar-home-tilde true
+
+set font "Fira Code 14"
+set default-bg rgba(39,42,54,0.93)
+set recolor-lightcolor rgba(0,0,0,0)
+set default-fg "#F7F7F6" #01
+set statusbar-fg "#f8f8f2" #04
+set statusbar-bg "#282a36" #01
+set inputbar-bg "#282a36" #00 currently not used
+set inputbar-fg "#f8f8f2" #02
+set notification-error-bg "#ff5555" #08
+set notification-error-fg "#f8f8f2" #00
+set notification-warning-bg "#ffb86c" #08
+set notification-warning-fg "#44475a" #00
+set highlight-color "#ffb86c" #0A
+set highlight-active-color "#ff79c6" #0D
+set completion-highlight-fg "#f8f8f2" #02
+set completion-highlight-bg "#44475a" #0C
+set completion-bg "#282a36" #02
+set completion-fg "#6272a4" #0C
+set notification-bg "#282a36" #0B
+set notification-fg "#f8f8f2" #00
+set recolor "true"
+set recolor-reverse-video "true"
+set recolor-keephue "true"
+set render-loading "false"

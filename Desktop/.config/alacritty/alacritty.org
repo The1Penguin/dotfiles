@@ -1,0 +1,62 @@
+#+title: Alacritty
+#+PROPERTY: header-args :tangle alacritty.yml
+
+* Table of contents :toc:
+- [[#window][Window]]
+- [[#scrolling][Scrolling]]
+- [[#font][Font]]
+- [[#opacity][Opacity]]
+- [[#shell][Shell]]
+- [[#import][Import]]
+
+* Window
+#+begin_src yml
+window:
+  padding:
+    x: 5
+    y: 3
+  title: Alacritty
+  dynamic_title: false
+#+end_src
+
+* Scrolling
+#+begin_src yml
+scrolling:
+  multiplier: 1
+#+end_src
+
+* Font
+#+begin_src yml
+font:
+  normal:
+    family: Fira Code
+    style: Regular
+  bold:
+    family: Fira Code
+    style: Bold
+  italic:
+    family: Fira Code
+    style: Italic
+  bold_italic:
+    family: Fira Code
+    style: Bold Italic
+  size: 14.0
+#+end_src
+
+* Opacity
+#+begin_src yml
+background_opacity: 0.93
+#+end_src
+
+* Shell
+Sets shell to fish in emulator to not break system
+#+begin_src yml
+shell:
+  program: /bin/fish
+#+end_src
+
+* Import
+#+begin_src yml
+import:
+  - /home/thepenguin/.config/alacritty/dracula.yml
+#+end_src

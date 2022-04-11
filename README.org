@@ -1,0 +1,6 @@
+#+title: Readme
+
+Just did a reedit of my dotfiles from my desktop, might add the ones from my laptop.
+
+#+caption: Picture of emacs, pridefetch and cbonsai running
+Desktop looks like [[./screenshot/desktop.png]]

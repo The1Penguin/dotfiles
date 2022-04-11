@@ -1,0 +1,123 @@
+#+title: Dunstrc
+#+PROPERTY: header-args :tangle dunstrc
+
+* Global options
+** Main
+#+begin_src conf
+[global]
+    monitor = 0
+    follow = none
+    width = 350
+    height = 300
+    origin = top-right
+    offset = 12x41
+    scale = 0
+    notification_limit = 0
+#+end_src
+
+** Progress bar
+#+begin_src conf
+    progress_bar = true
+    progress_bar_height = 10
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+#+end_src
+
+** Look
+#+begin_src conf
+    transparency = 30
+    separator_height = 2
+    padding = 8
+    horizontal_padding = 8
+    text_icon_padding = 0
+    frame_width = 2
+    frame_color = "#ff79c6"
+    separator_color = frame
+    corner_radius = 3
+#+end_src
+** Text
+    The format of the message.  Possible variables are:
+      %a  appname
+      %s  summary
+      %b  body
+      %i  iconname (including its path)
+      %I  iconname (without its path)
+      %p  progress value if set ([  0%] to [100%]) or nothing
+      %n  progress value if set without any extra characters
+      %%  Literal %
+    Markup is allowed
+#+begin_src conf
+    font = Fira Code 10
+    line_height = 0
+    markup = full
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+    ellipsize = middle
+    ignore_newline = no
+
+    format = "<b>%s</b>\n%b"
+#+end_src
+
+** Duplicates
+#+begin_src conf
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+#+end_src
+
+** Icons
+#+begin_src conf
+    icon_position = left
+    min_icon_size = 0
+    max_icon_size = 32
+    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+#+end_src
+
+** History
+#+begin_src conf
+    sticky_history = yes
+    history_length = 20
+
+#+end_src
+
+** Mouse
+    #+begin_src conf
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+#+end_src
+
+** Misc
+#+begin_src conf
+    dmenu = /usr/bin/dmenu -p dunst:
+    browser = /usr/bin/xdg-open
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    ignore_dbusclose = false
+    force_xwayland = false
+    force_xinerama = false
+    indicate_hidden = yes
+    sort = yes
+#+end_src
+
+* Urgency
+#+begin_src conf
+[urgency_low]
+    background = "#1e1d2f"
+    foreground = "#d9e0ee"
+    timeout = 6
+
+[urgency_normal]
+    background = "#1e1d2f"
+    foreground = "#d9e0ee"
+    timeout = 6
+
+[urgency_critical]
+    background = "#1e1d2f"
+    foreground = "#d9e0ee"
+    frame_color = "#AF8744"
+    timeout = 0
+#+end_src

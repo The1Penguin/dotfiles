@@ -1,0 +1,167 @@
+#+title: Sxhkdrc
+#+PROPERTY: header-args :tangle sxhkdrc
+
+* Table of contents :toc:
+- [[#wm-agnostic][WM agnostic]]
+  - [[#audio][Audio]]
+  - [[#launchers][Launchers]]
+  - [[#misc][Misc]]
+- [[#bspwm][BSPWM]]
+  - [[#main][Main]]
+  - [[#state][State]]
+  - [[#focus-and-swap][Focus and swap]]
+  - [[#preselection][Preselection]]
+  - [[#move-and-resize][Move and resize]]
+
+* WM agnostic
+#+begin_src conf
+super + Return
+    alacritty
+
+super + d
+    rofi -show drun
+
+super + Escape
+    pkill -USR1 -x sxhkd
+
+alt + shift + x
+    betterlockscreen -l dimblur
+#+end_src
+
+** Audio
+#+begin_src conf
+mode_switch + {Down,Right,Left}
+    playerctl {play-pause,next,previous}
+
+XF86Audio{Pause,Next,Prev}
+    playerctl {play-pause,next,previous}
+#+end_src
+
+** Launchers
+#+begin_src conf
+super + F1
+    firefox-beta
+
+super + F2
+    LD_PRELOAD=/usr/lib/libv4l/v4l2convert.so discord-canary --no-sandbox
+
+super + F3
+    exec spotify
+
+super + F4
+    lutris
+
+super + p
+    pavucontrol
+
+super + u
+    exec authpass
+
+super + e
+    emacs
+
+super + v
+    emacsclient --eval "(emacs-everywhere)"
+#+end_src
+
+** Misc
+#+begin_src conf
+super + i
+    exec $HOME/.local/bin/wacom.sh
+
+super + o
+    exec $HOME/.local/bin/change-source.sh
+
+Print
+    flameshot gui
+
+super + a
+    exec rofi-bluetooth
+
+super + b
+    exec $HOME/.local/bin/rofi_book -d $HOME/Documents/Books/
+
+super + shift + Tab
+    exec $HOME/.local/bin/rofi_powermenu
+
+super + space
+    xdotool key F19
+#+end_src
+
+* BSPWM
+** Main
+#+begin_src conf
+super + alt + r
+    bspc wm -r
+
+super + {_,shift + }q
+    bspc node -{c,k}
+
+super + m
+    bspc desktop -l next
+#+end_src
+** State
+
+#+begin_src conf
+super + {t,shift + t,s,f}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+super + ctrl + {m,x,y,z}
+    bspc node -g {marked,locked,sticky,private}
+#+end_src
+
+** Focus and swap
+#+begin_src conf
+super + {_,shift + }{Left,Down,Up,Right}
+    bspc node -{f,s} {west,south,north,east}
+
+super + {_,shift + }{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
+
+super + {_,shift + }c
+    bspc node -f {next,prev}.local
+
+super + bracket{left,right}
+    bspc desktop -f {prev,next}.local
+
+super + {grave,Tab}
+    bspc {node,desktop} -f last
+
+super + {_,shift + }{1-9,0}
+    bspc {desktop -f,node -d} '^{1-9,10}'
+
+super + r
+    bspc node @/ -C forward
+#+end_src
+
+** Preselection
+#+begin_src conf
+super + ctrl + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+
+super + ctrl + {1-9}
+    bspc node -o 0.{1-9}
+
+super + ctrl + space
+    bspc node -p cancel
+
+super + ctrl + shift + space
+    bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+#+end_src
+** Move and resize
+#+begin_src conf
+super + alt + {h,j,k,l}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+super + alt + shift + {h,j,k,l}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+super + alt + {Left,Down,Up,Right}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+super + alt + shift + {Left,Down,Up,Right}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+super + ctrl + {Left,Down,Up,Right}
+    bspc node -v {-20 0,0 20,0 -20,20 0}
+#+end_src
